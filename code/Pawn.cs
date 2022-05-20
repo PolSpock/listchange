@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sandbox
 {
-	partial class Pawn : AnimEntity
+	partial class Pawn : AnimatedEntity
 	{
 		/// <summary>
 		/// Called when the entity is first created 
@@ -52,7 +52,7 @@ namespace Sandbox
 			}
 
 			// If we're running serverside and Attack1 was just pressed, spawn a ragdoll
-			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
+			if ( IsServer && Input.Pressed( InputButton.PrimaryAttack ) )
 			{
 				var ragdoll = new ModelEntity();
 				ragdoll.SetModel( "models/citizen/citizen.vmdl" );
