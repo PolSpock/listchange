@@ -26,7 +26,7 @@
   <PropertyGroup>
 	<OutputPath>../.vs/output/</OutputPath>
 	<DocumentationFile>../.vs/output/listchange.xml</DocumentationFile>
-	<RootNamespace>Sandbox</RootNamespace>
+	<RootNamespace>Listchange</RootNamespace>
   </PropertyGroup>
 
 	<ItemGroup>

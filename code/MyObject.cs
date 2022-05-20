@@ -1,12 +1,14 @@
-﻿namespace Sandbox
+﻿using Sandbox;
+
+namespace Listchange
 {
 	public class MyObject : BaseNetworkable
 	{
-		public MyObject( string test )
-		{
-			Test = test;
-		}
 
 		public string Test { get; set; }
+
+		public MyObject( )
+		{
+		}
 	}
 }

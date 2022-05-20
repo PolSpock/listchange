@@ -1,12 +1,9 @@
-﻿
+﻿using Sandbox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-//
-// You don't need to put things in a namespace, but it doesn't hurt.
-//
-namespace Sandbox
+namespace Listchange
 {
 	/// <summary>
 	/// This is your game class. This is an entity that is created serverside when
@@ -23,8 +20,10 @@ namespace Sandbox
 			{
 				Log.Info( "My Gamemode Has Created Serverside!" );
 
+				// Works
 				DataString.Add( "I'm gonna update" );
-				DataObject.Add( new MyObject("I have to update") );
+				// Not works
+				DataObject.Add( new MyObject() );
 			}
 
 			if ( IsClient )
@@ -34,27 +33,37 @@ namespace Sandbox
 			}
 		}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Not works
+
 		[Net, Change( Name = "OnDataObjectChanged" )]
 		public IList<MyObject> DataObject { get; set; }
 
 		public void OnDataObjectChanged( IList<MyObject> oldValue, IList<MyObject> newValue )
 		{
+			Log.Info( "Will never changed :(" );
+
 			Log.Info( oldValue );
 			Log.Info( newValue );
-
-			Log.Info( "Will never changed :(" );
 		}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Works
 
 		[Net, Change( Name = "OnDataStringChanged" )]
 		public IList<string> DataString { get; set; }
 
 		public void OnDataStringChanged( IList<string> oldValue, IList<string> newValue )
 		{
+			Log.Info( "Has changed" );
+
 			Log.Info( oldValue );
 			Log.Info( newValue );
-
-			Log.Info( "Has changed" );
 		}
+
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Basic stuff
 
 		/// <summary>
 		/// A client has joined the server. Make them a pawn to play with
